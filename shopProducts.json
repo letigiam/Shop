@@ -1,0 +1,31 @@
+
+[{
+    "id": 0,
+    "sku": 1234,
+    "name" : "iphone12",
+    "price" : 950
+},
+{
+    "id": 1,
+    "sku": 12,
+    "name" : "iphone 4s",
+    "price" : 90
+},
+{
+    "id": 2,
+    "sku": 1256,
+    "name" : "iphone 11",
+    "price" : 690
+},
+{
+    "id": 3,
+    "sku": 1267,
+    "name" : "iphone 8",
+    "price" : 390
+},
+{
+    "id": 4,
+    "sku": 1276,
+    "name" : "iphone 7",
+    "price" : 290
+}]
