@@ -1,6 +1,5 @@
 console.log('sto eseguendo shop.js');
 
-//import { json, urlencoded } from 'body-parser';
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -11,23 +10,19 @@ const { param } = require('express-validator');
 app.use(bodyParser.urlencoded({ extended: true }));
 var products = require('./shopProducts.json');
 const authenticateToken = ["admin"];
-const router = express.Router();
-const redis = require("redis");
-
-
 
 //Function Token
-// var checkToken = ({query}, res, next)=>{
-//   if(authenticateToken.find(item => item === query.token)){
-//     next()
-//   } else{
-//     res.status(401).json("Invalid token")
-//   }
-// }
+var checkToken = ({query}, res, next)=>{
+  if(authenticateToken.find(item => item === query.token)){
+     next()
+  } else{
+    res.status(401).json("Invalid token")
+   }
+}
 
 
 // //questo applica a tutte le API il token
-// app.all("*",checkToken);
+ app.all("*",checkToken);
 
 //mostra tutti i prodotti
 app.get('/products', (_, res)=>{ res.json(products)});
@@ -81,8 +76,6 @@ app.delete('/products/:id', param("id").isNumeric(), ({params:{id}}, res) => {
         return res.status(200).json({message: 'Products deleted'})
     }res.status(404).json('Products not found');
 });
-
-
 
 app.listen(3003);
 exports.app=app;
